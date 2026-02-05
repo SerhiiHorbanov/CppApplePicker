@@ -18,5 +18,9 @@ void ABasketPlayerController::Tick(float DeltaTime)
 	FVector ScreenPos;
 	
 	DeprojectMousePositionToWorld(MousePos, ScreenPos);
+	
+	MousePos.X = 0.0f;
+	MousePos.Z = -300.0f;
+	
 	PossessedBasket->MoveTo(MousePos);
 }
