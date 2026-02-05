@@ -12,10 +12,4 @@ UCLASS()
 class CPPAPPLEPICKER_API AApplePickerGameMode : public AGameModeBase
 {
 	GENERATED_BODY()
-
-	AApplePickerGameMode()
-	{
-		PlayerControllerClass = ABasketPlayerController::StaticClass();
-		DefaultPawnClass = ABasket::StaticClass();
-	};
 };
