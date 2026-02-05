@@ -16,5 +16,6 @@ ABasket::ABasket()
 	if (Cube.Succeeded())
 	{
 		CubeMesh->SetStaticMesh(Cube.Object);
+		CubeMesh->SetRelativeScale3D(FVector(4, 4, 1));
 	}
 }
