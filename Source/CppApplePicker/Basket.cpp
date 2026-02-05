@@ -2,20 +2,7 @@
 
 #include "Basket.h"
 
-ABasket::ABasket()
+void ABasket::MoveTo(const FVector& NewPos)
 {
-	RootComponent = CreateDefaultSubobject<USceneComponent>(TEXT("Root"));
-
-	CubeMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("CubeMesh"));
-	CubeMesh->SetupAttachment(RootComponent);
-
-	static ConstructorHelpers::FObjectFinder<UStaticMesh> Cube(
-		TEXT("/Engine/BasicShapes/Cube.Cube")
-	);
-
-	if (Cube.Succeeded())
-	{
-		CubeMesh->SetStaticMesh(Cube.Object);
-		CubeMesh->SetRelativeScale3D(FVector(4, 4, 1));
-	}
+	SetActorLocation(NewPos);
 }

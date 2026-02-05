@@ -18,10 +18,5 @@ protected:
 	
 public:
 	
-	ABasket();
-
-	void MoveTo(const FVector& NewPos)
-	{
-		SetActorLocation(NewPos);
-	}
+	void MoveTo(const FVector& NewPos);
 };
