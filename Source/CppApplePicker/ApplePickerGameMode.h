@@ -6,14 +6,15 @@
 #include "Basket.h"
 #include "BasketPlayerController.h"
 #include "GameFramework/GameModeBase.h"
+#include "Kismet/GameplayStatics.h"
 #include "ApplePickerGameMode.generated.h"
 
 UCLASS()
 class CPPAPPLEPICKER_API AApplePickerGameMode : public AGameModeBase
 {
 	GENERATED_BODY()
+
+public:
 	
-	AApplePickerGameMode()
-	{
-	}
+	void OnAppleDied() const;
 };

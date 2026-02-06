@@ -3,13 +3,15 @@
 
 #include "Apple.h"
 
+#include "ApplePickerGameMode.h"
+
 AApple::AApple()
 {
 	PrimaryActorTick.bCanEverTick = true;
 	
 	RootComponent = CreateDefaultSubobject<USceneComponent>(TEXT("Root"));
 
-	UStaticMeshComponent* Mesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("CubeMesh"));
+	UStaticMeshComponent* Mesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Sphere"));
 	Sphere = Mesh;
 	Sphere->SetupAttachment(RootComponent);
 
@@ -35,6 +37,10 @@ void AApple::Tick(float DeltaTime)
 	if (Z < MinZ)
 	{
 		Destroy();
+		AApplePickerGameMode* gameMode = GetWorld()->GetAuthGameMode<AApplePickerGameMode>();
+		
+		if (gameMode)
+			gameMode->OnAppleDied();
 	}
 }
 
