@@ -14,4 +14,9 @@ class CPPAPPLEPICKER_API AApplePickerGameState : public AGameStateBase
 {
 	GENERATED_BODY()
 	
+	int Score;
+
+public:
+	
+	void IncreaseScore();
 };
