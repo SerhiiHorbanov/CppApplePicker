@@ -6,24 +6,35 @@
 AApple::AApple()
 {
 	PrimaryActorTick.bCanEverTick = true;
+	
+	RootComponent = CreateDefaultSubobject<USceneComponent>(TEXT("Root"));
 
+	UStaticMeshComponent* Mesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("CubeMesh"));
+	Sphere = Mesh;
+	Sphere->SetupAttachment(RootComponent);
+
+	static ConstructorHelpers::FObjectFinder<UStaticMesh> Cube(
+		TEXT("/Engine/BasicShapes/Sphere.Sphere")
+	);
+
+	if (Cube.Succeeded())
+	{
+		Mesh->SetStaticMesh(Cube.Object);
+	}
 }
 
 void AApple::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 	
-	float z = Sphere->GetComponentLocation().Z;
+	if (!Sphere)
+		return;
+
+	const float Z = Sphere->GetComponentLocation().Z;
 	
-	if (z < MinZ)
+	if (Z < MinZ)
 	{
 		Destroy();
-		GEngine->AddOnScreenDebugMessage(
-			-1,
-			2.0f,
-			FColor::Green,
-			TEXT("Method is running")
-		);
 	}
 }
 
