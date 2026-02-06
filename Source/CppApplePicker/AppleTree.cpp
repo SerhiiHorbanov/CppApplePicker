@@ -41,12 +41,12 @@ void AAppleTree::Tick(float DeltaTime)
 	
 	FVector Position = GetActorLocation();
 	
-	if (Position.X > RightAndLeftEdge)
+	if (Position.Y > RightAndLeftEdge)
 		Speed = -abs(Speed);
-	else if (Position.X < -RightAndLeftEdge)
+	else if (Position.Y < -RightAndLeftEdge)
 		Speed = abs(Speed);
 	
-	Position.X += Speed * DeltaTime;
+	Position.Y += Speed * DeltaTime;
 	
 	SetActorLocation(Position);
 }
