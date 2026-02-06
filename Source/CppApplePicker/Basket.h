@@ -18,5 +18,8 @@ protected:
 	
 public:
 	
+	UFUNCTION(BlueprintCallable)
+	void OnHit(AActor* Other);
+
 	void MoveTo(const FVector& NewPos);
 };
