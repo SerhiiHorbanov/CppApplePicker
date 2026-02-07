@@ -13,15 +13,16 @@ AApple::AApple()
 
 	UStaticMeshComponent* Mesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Sphere"));
 	Sphere = Mesh;
+	
 	Sphere->SetupAttachment(RootComponent);
 
-	static ConstructorHelpers::FObjectFinder<UStaticMesh> Cube(
+	static ConstructorHelpers::FObjectFinder<UStaticMesh> SphereMesh(
 		TEXT("/Engine/BasicShapes/Sphere.Sphere")
 	);
 
-	if (Cube.Succeeded())
+	if (SphereMesh.Succeeded())
 	{
-		Mesh->SetStaticMesh(Cube.Object);
+		Mesh->SetStaticMesh(SphereMesh.Object);
 	}
 }
 
@@ -33,6 +34,10 @@ void AApple::Tick(float DeltaTime)
 		return;
 
 	const float Z = Sphere->GetComponentLocation().Z;
+	
+	FString str = FString::Printf(TEXT("Z: %f"), Z);
+	
+	GEngine->AddOnScreenDebugMessage(-1, 2.f, FColor(1, 255, 1), str);
 	
 	if (Z < MinZ)
 	{

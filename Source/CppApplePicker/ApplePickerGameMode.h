@@ -16,5 +16,6 @@ class CPPAPPLEPICKER_API AApplePickerGameMode : public AGameModeBase
 
 public:
 	
-	void OnAppleDied() const;
+	UFUNCTION(BlueprintCallable)
+	void OnAppleDied();
 };
