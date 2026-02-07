@@ -19,8 +19,6 @@ public:
 	UPROPERTY(EditAnywhere, Category="Apple", Instanced)
 	USceneComponent* Sphere;
 	
-	bool AlreadyHit = false;
-	
 	AApple();
 
 	virtual void Tick(float DeltaTime) override;

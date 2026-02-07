@@ -35,8 +35,6 @@ void AApple::Tick(float DeltaTime)
 
 	const float Z = Sphere->GetComponentLocation().Z;
 	
-	FString str = FString::Printf(TEXT("Z: %f"), Z);
-	
 	if (Z < MinZ)
 	{
 		Destroy();
