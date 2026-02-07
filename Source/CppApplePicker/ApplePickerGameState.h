@@ -6,18 +6,23 @@
 #include "GameFramework/GameStateBase.h"
 #include "ApplePickerGameState.generated.h"
 
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FScoreChanged, int, NewValue);
+
 UCLASS()
 class CPPAPPLEPICKER_API AApplePickerGameState : public AGameStateBase
 {
 	GENERATED_BODY()
 	
-	UPROPERTY(EditAnywhere, Category="ApplePickerGameState")
+public:
+	
+	UPROPERTY(BlueprintReadOnly, Category="ApplePickerGameState")
 	int Score;
 
-	UPROPERTY(EditAnywhere, Category="ApplePickerGameState")
+	UPROPERTY(BlueprintReadOnly, Category="ApplePickerGameState")
 	int HighScore;
 	
-public:
+	UPROPERTY(BlueprintAssignable, Category="ApplePickerGameState")
+	FScoreChanged OnScoreChanged;
 	
 	void LoadHighScore();
 	

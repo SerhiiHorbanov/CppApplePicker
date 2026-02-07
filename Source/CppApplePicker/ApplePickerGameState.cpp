@@ -16,8 +16,6 @@ void AApplePickerGameState::LoadHighScore()
 	{
 		HighScore = Save->HighScore;
 	}
-	
-	GEngine->AddOnScreenDebugMessage(-1, 10.0f, FColor::Green, FString::Printf(TEXT("HighScore: %d"), HighScore));
 }
 
 void AApplePickerGameState::BeginPlay()
@@ -42,9 +40,6 @@ void AApplePickerGameState::EndPlay(const EEndPlayReason::Type EndPlayReason)
 {
 	Super::EndPlay(EndPlayReason);
 	
-	GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Green, FString::Printf(TEXT("HighScore on end: %d"), HighScore));
-	GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Green, FString::Printf(TEXT("Score on end: %d"), Score));
-	
 	if (Score > HighScore)
 		SaveHighScore();
 }
@@ -53,10 +48,6 @@ void AApplePickerGameState::IncreaseScore()
 {
 	Score += 100;
 	FString ScoreString = FString::FromInt(Score);
-	GEngine->AddOnScreenDebugMessage(
-		-1,
-		2.0f,
-		FColor::Green,
-		ScoreString	
-		);
+	
+	OnScoreChanged.Broadcast(Score);
 }
