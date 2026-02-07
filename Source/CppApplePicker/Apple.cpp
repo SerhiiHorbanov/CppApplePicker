@@ -37,8 +37,6 @@ void AApple::Tick(float DeltaTime)
 	
 	FString str = FString::Printf(TEXT("Z: %f"), Z);
 	
-	GEngine->AddOnScreenDebugMessage(-1, 2.f, FColor(1, 255, 1), str);
-	
 	if (Z < MinZ)
 	{
 		Destroy();

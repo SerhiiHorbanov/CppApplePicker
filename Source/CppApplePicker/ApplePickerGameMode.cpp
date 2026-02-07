@@ -4,9 +4,7 @@
 #include "ApplePickerGameMode.h"
 
 void AApplePickerGameMode::OnAppleDied()
-{
-	GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor(255,1,1), TEXT("apl dropd"));
-	
+{	
 	UWorld* World = GetWorld();
 	
 	APlayerController* FirstPlayerController = World->GetFirstPlayerController();
